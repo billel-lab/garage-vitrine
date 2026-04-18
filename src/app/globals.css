@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  /* Industrial Dark palette — atelier tuning / préparation */
+  --color-ink-50: #f5f5f6;
+  --color-ink-100: #e3e3e6;
+  --color-ink-200: #c5c5ca;
+  --color-ink-300: #9c9ca3;
+  --color-ink-400: #6c6c75;
+  --color-ink-500: #4a4a52;
+  --color-ink-600: #32323a;
+  --color-ink-700: #232329;
+  --color-ink-800: #16161b;
+  --color-ink-900: #0b0b0f;
+  --color-ink-950: #050507;
+
+  /* Orange feu (accent principal) */
+  --color-ember-50: #fff4ed;
+  --color-ember-100: #ffe5d4;
+  --color-ember-200: #ffc7a8;
+  --color-ember-300: #ff9f70;
+  --color-ember-400: #ff7033;
+  --color-ember-500: #ff4d0d;
+  --color-ember-600: #f03400;
+  --color-ember-700: #c62600;
+  --color-ember-800: #9c2005;
+  --color-ember-900: #7e1c08;
+
+  /* Rouge brake caliper */
+  --color-rust-500: #dc2626;
+  --color-rust-600: #b91c1c;
+
+  /* Jaune warning (utilisé avec parcimonie) */
+  --color-signal-400: #facc15;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: var(--color-ink-950);
+  color: var(--color-ink-50);
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Subtle grain overlay (optional, très léger) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(rgba(255, 112, 51, 0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
+  mix-blend-mode: overlay;
+  opacity: 0.25;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-ember-500);
+  color: var(--color-ink-950);
+}
+
+/* Scrollbar dark */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-700);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ember-600);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap, 1rem))); }
+}
+@keyframes marquee-reverse {
+  from { transform: translateX(calc(-100% - var(--gap, 1rem))); }
+  to { transform: translateX(0); }
+}
+.animate-marquee {
+  animation: marquee var(--duration, 40s) linear infinite;
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--duration, 40s) linear infinite;
+}
+
+/* Shimmer button */
+@keyframes shimmer-slide {
+  to { transform: translate(calc(100cqw - 100%), 0); }
+}
+@keyframes spin-around {
+  0% { transform: translateZ(0) rotate(0); }
+  15%, 35% { transform: translateZ(0) rotate(90deg); }
+  65%, 85% { transform: translateZ(0) rotate(270deg); }
+  100% { transform: translateZ(0) rotate(360deg); }
+}
+
+/* Border beam */
+@keyframes border-beam {
+  100% { offset-distance: 100%; }
+}
+
+/* Pulse ring (WhatsApp) */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  80%, 100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Grid noise pattern for hero */
+.bg-industrial-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, #000 40%, transparent 80%);
+}
+
+/* Headings font utility */
+.font-display {
+  font-family: var(--font-display), "Oswald", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.font-body {
+  font-family: var(--font-body), "Inter", system-ui, sans-serif;
+}
+
+/* Ember glow */
+.shadow-ember {
+  box-shadow:
+    0 10px 40px -10px rgba(255, 77, 13, 0.45),
+    0 4px 12px -2px rgba(255, 77, 13, 0.25);
+}
+.text-ember-gradient {
+  background: linear-gradient(120deg, #ff7033 0%, #ff4d0d 50%, #ffb088 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
