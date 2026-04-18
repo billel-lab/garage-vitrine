@@ -579,6 +579,6 @@ export const dictionaries = {
       },
     },
   },
-} as const;
+};
 
-export type Dict = typeof dictionaries.fr;
+export type Dict = (typeof dictionaries)["fr"];
