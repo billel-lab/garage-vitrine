@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Phone } from "lucide-react";
 import { useLang } from "@/lib/i18n";
+import { telHref, blockedLinkProps } from "@/lib/utils";
 
 export default function StickyMobileCTA() {
   const { t } = useLang();
@@ -24,8 +25,9 @@ export default function StickyMobileCTA() {
     >
       <div className="flex items-stretch gap-2 rounded-2xl border border-ink-800 bg-ink-950/90 p-2 backdrop-blur-xl shadow-xl">
         <a
-          href={`tel:${process.env.NEXT_PUBLIC_PHONE?.replace(/\s/g, "") ?? "+32478115981"}`}
-          className="grid h-11 w-11 place-items-center rounded-xl border border-ink-700 bg-ink-900 text-ink-100"
+          href={telHref()}
+          {...blockedLinkProps}
+          className="grid h-11 w-11 cursor-not-allowed place-items-center rounded-xl border border-ink-700 bg-ink-900 text-ink-500"
           aria-label={t.nav.phone}
         >
           <Phone className="h-4.5 w-4.5" />

@@ -6,12 +6,17 @@ import PageHeader from "@/components/shared/PageHeader";
 import MultiStepForm from "@/components/form/MultiStepForm";
 import BlurFade from "@/components/ui/blur-fade";
 import WhatsAppIcon from "@/components/ui/whatsapp-icon";
-import { whatsappLink } from "@/lib/utils";
+import {
+  whatsappLink,
+  telHref,
+  mailHref,
+  DISPLAY_PHONE,
+  DISPLAY_EMAIL,
+  DEMO_MODE,
+} from "@/lib/utils";
 
 export default function ContactPage() {
   const { t } = useLang();
-  const phone = process.env.NEXT_PUBLIC_PHONE ?? "+32 478 11 59 81";
-  const phoneRaw = phone.replace(/\s/g, "");
 
   return (
     <>
@@ -36,22 +41,25 @@ export default function ContactPage() {
                   <InfoCard
                     icon={Phone}
                     title={t.nav.phone}
-                    primary={phone}
-                    href={`tel:${phoneRaw}`}
+                    primary={DISPLAY_PHONE}
+                    href={telHref()}
+                    disabled
                     hint="Lun–Ven 8h30–18h"
                   />
                   <InfoCard
                     icon={WhatsAppIcon}
                     title="WhatsApp"
-                    primary={phone}
+                    primary={DISPLAY_PHONE}
                     href={whatsappLink("Bonjour, je souhaite un devis.")}
+                    disabled
                     hint="Réponse rapide"
                   />
                   <InfoCard
                     icon={Mail}
                     title="Email"
-                    primary="contact@garage.example.be"
-                    href="mailto:contact@garage.example.be"
+                    primary={DISPLAY_EMAIL}
+                    href={mailHref()}
+                    disabled
                     hint="Réponse sous 24h"
                   />
                   <InfoCard
@@ -81,15 +89,24 @@ function InfoCard({
   primary,
   hint,
   href,
+  disabled,
 }: {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   primary: string;
   hint?: string;
   href?: string;
+  disabled?: boolean;
 }) {
   const content = (
-    <div className="group flex items-start gap-4 rounded-2xl border border-ink-800 bg-ink-900/60 p-5 transition-all hover:border-ember-500/50 hover:bg-ink-900">
+    <div
+      className={
+        "group flex items-start gap-4 rounded-2xl border border-ink-800 bg-ink-900/60 p-5 transition-all " +
+        (disabled
+          ? "cursor-not-allowed opacity-95"
+          : "hover:border-ember-500/50 hover:bg-ink-900")
+      }
+    >
       <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-ember-500/10 text-ember-400 transition-colors group-hover:bg-ember-500 group-hover:text-ink-950">
         <Icon className="h-5 w-5" strokeWidth={2.2} />
       </div>
@@ -105,11 +122,29 @@ function InfoCard({
     </div>
   );
 
-  return href ? (
-    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+  if (!href) return content;
+
+  if (disabled || DEMO_MODE) {
+    return (
+      <a
+        href="#"
+        onClick={(e) => e.preventDefault()}
+        aria-disabled="true"
+        tabIndex={-1}
+        role="link"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel="noopener noreferrer"
+    >
       {content}
     </a>
-  ) : (
-    content
   );
 }

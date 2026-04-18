@@ -9,10 +9,10 @@ import Eyebrow from "@/components/ui/eyebrow";
 import ShimmerButton from "@/components/ui/shimmer-button";
 import GhostButton from "@/components/ui/ghost-button";
 import BorderBeam from "@/components/ui/border-beam";
+import { DISPLAY_PHONE, telHref, blockedLinkProps } from "@/lib/utils";
 
 export default function CTAFinal() {
   const { t } = useLang();
-  const phone = process.env.NEXT_PUBLIC_PHONE?.replace(/\s/g, "") ?? "+32478115981";
 
   return (
     <section className="relative overflow-hidden bg-ink-950 py-20 lg:py-28">
@@ -55,14 +55,14 @@ export default function CTAFinal() {
                   <ArrowRight className="h-4 w-4" />
                 </ShimmerButton>
               </Link>
-              <a href={`tel:${phone}`}>
-                <GhostButton className="w-full">
+              <a href={telHref()} {...blockedLinkProps} className="cursor-not-allowed">
+                <GhostButton className="w-full pointer-events-none">
                   <Phone className="h-4 w-4" />
                   {t.ctaFinal.secondary}
                 </GhostButton>
               </a>
               <p className="mt-1 text-center text-xs text-ink-500">
-                {process.env.NEXT_PUBLIC_PHONE ?? "+32 478 11 59 81"} · Lun–Ven 8h30–18h
+                {DISPLAY_PHONE} · Lun–Ven 8h30–18h
               </p>
             </BlurFade>
           </div>

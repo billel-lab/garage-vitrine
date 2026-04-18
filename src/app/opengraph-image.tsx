@@ -88,9 +88,9 @@ export default function OGImage() {
             color: "#c5c5ca",
           }}
         >
-          <div style={{ display: "flex" }}>garage.example.be</div>
+          <div style={{ display: "flex" }}>demo-garage.example</div>
           <div style={{ display: "flex", color: "#ff4d0d", fontWeight: 700 }}>
-            +32 478 11 59 81
+            +32 XXX XX XX XX
           </div>
         </div>
       </div>

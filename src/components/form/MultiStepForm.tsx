@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Sparkles, CircleCheck } from "lucide-react";
 import { useLang } from "@/lib/i18n";
-import { cn } from "@/lib/utils";
+import { cn, DISPLAY_PHONE } from "@/lib/utils";
 import ShimmerButton from "@/components/ui/shimmer-button";
 import GhostButton from "@/components/ui/ghost-button";
 import Confetti from "./Confetti";
@@ -87,9 +87,7 @@ export default function MultiStepForm() {
           <h3 className="mt-5 font-display text-2xl tracking-wide text-ink-50 sm:text-3xl">
             {t.contact.success}
           </h3>
-          <p className="mt-3 text-sm text-ink-400">
-            {process.env.NEXT_PUBLIC_PHONE ?? "+32 478 11 59 81"}
-          </p>
+          <p className="mt-3 text-sm text-ink-400">{DISPLAY_PHONE}</p>
           <button
             onClick={reset}
             className="mt-6 text-xs font-bold uppercase tracking-widest text-ember-400 hover:text-ember-300"

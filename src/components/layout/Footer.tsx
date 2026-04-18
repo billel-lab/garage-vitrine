@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, Clock, Wrench } from "lucide-react";
 import { useLang } from "@/lib/i18n";
+import { DISPLAY_PHONE, DISPLAY_EMAIL, telHref, mailHref, blockedLinkProps } from "@/lib/utils";
 
 export default function Footer() {
   const { t } = useLang();
@@ -71,14 +72,14 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-ember-400" />
-                <a href={`tel:${process.env.NEXT_PUBLIC_PHONE?.replace(/\s/g, "") ?? "+32478115981"}`} className="hover:text-ember-300">
-                  {process.env.NEXT_PUBLIC_PHONE ?? "+32 478 11 59 81"}
+                <a href={telHref()} {...blockedLinkProps} className="cursor-not-allowed text-ink-300">
+                  {DISPLAY_PHONE}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-ember-400" />
-                <a href="mailto:contact@garage.example.be" className="hover:text-ember-300">
-                  contact@garage.example.be
+                <a href={mailHref()} {...blockedLinkProps} className="cursor-not-allowed text-ink-300">
+                  {DISPLAY_EMAIL}
                 </a>
               </li>
               <li className="flex items-start gap-3">

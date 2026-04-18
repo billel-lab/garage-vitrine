@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, Wrench, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLang } from "@/lib/i18n";
-import { cn } from "@/lib/utils";
+import { cn, DISPLAY_PHONE } from "@/lib/utils";
 import LangSwitch from "./LangSwitch";
 
 export default function Header() {
@@ -143,9 +143,7 @@ export default function Header() {
               >
                 {t.nav.cta}
               </Link>
-              <p className="mt-6 text-xs text-ink-500">
-                {process.env.NEXT_PUBLIC_PHONE ?? "+32 478 11 59 81"}
-              </p>
+              <p className="mt-6 text-xs text-ink-500">{DISPLAY_PHONE}</p>
             </motion.div>
           </motion.div>
         )}

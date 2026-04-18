@@ -6,7 +6,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import { useLang } from "@/lib/i18n";
-import { whatsappLink } from "@/lib/utils";
+import { whatsappLink, DEMO_MODE } from "@/lib/utils";
 import BorderBeam from "@/components/ui/border-beam";
 import WhatsAppIcon from "@/components/ui/whatsapp-icon";
 
@@ -197,9 +197,13 @@ export default function WelcomePopup() {
                     href={whatsappLink(
                       "Bonjour, je viens de voir l'offre atelier. Je souhaite réserver mon diagnostic.",
                     )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={close}
+                    target={DEMO_MODE ? undefined : "_blank"}
+                    rel={DEMO_MODE ? undefined : "noopener noreferrer"}
+                    onClick={(e) => {
+                      if (DEMO_MODE) e.preventDefault();
+                      close();
+                    }}
+                    aria-disabled={DEMO_MODE}
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-ink-700 bg-ink-900/60 px-5 py-3.5 text-xs font-bold uppercase tracking-widest text-ink-100 transition-colors hover:border-[#25d366]/60 hover:text-[#25d366]"
                   >
                     <WhatsAppIcon className="h-4 w-4 text-[#25d366]" />

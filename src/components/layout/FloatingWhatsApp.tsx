@@ -1,16 +1,18 @@
 "use client";
 
 import WhatsAppIcon from "@/components/ui/whatsapp-icon";
-import { whatsappLink } from "@/lib/utils";
+import { whatsappLink, blockedLinkProps, DEMO_MODE } from "@/lib/utils";
 
 export default function FloatingWhatsApp() {
+  const href = whatsappLink("Bonjour, je souhaite un devis pour mon véhicule.");
   return (
     <a
-      href={whatsappLink("Bonjour, je souhaite un devis pour mon véhicule.")}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={href}
+      {...(DEMO_MODE ? blockedLinkProps : {})}
+      target={DEMO_MODE ? undefined : "_blank"}
+      rel={DEMO_MODE ? undefined : "noopener noreferrer"}
       className="fixed bottom-4 right-4 z-40 md:bottom-6 md:right-6"
-      aria-label="Contacter sur WhatsApp"
+      aria-label="WhatsApp (démo — lien désactivé)"
     >
       <span className="relative grid h-14 w-14 place-items-center rounded-full bg-[#25d366] text-white shadow-lg shadow-[#25d366]/40 transition-transform hover:scale-110">
         <span
