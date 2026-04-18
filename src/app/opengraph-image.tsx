@@ -38,7 +38,15 @@ export default function OGImage() {
           >
             G
           </div>
-          <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 28,
+              fontWeight: 700,
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+            }}
+          >
             GARAGE
           </div>
         </div>
@@ -46,6 +54,8 @@ export default function OGImage() {
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div
             style={{
+              display: "flex",
+              flexDirection: "column",
               fontSize: 88,
               fontWeight: 800,
               lineHeight: 1.05,
@@ -53,20 +63,35 @@ export default function OGImage() {
               textTransform: "uppercase",
             }}
           >
-            Préparation.
-            <br />
-            <span style={{ color: "#ff7033" }}>Précision.</span>
-            <br />
-            Passion.
+            <div style={{ display: "flex" }}>Préparation.</div>
+            <div style={{ display: "flex", color: "#ff7033" }}>Précision.</div>
+            <div style={{ display: "flex" }}>Passion.</div>
           </div>
-          <div style={{ fontSize: 28, color: "#9c9ca3", maxWidth: 900 }}>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 28,
+              color: "#9c9ca3",
+              maxWidth: 900,
+            }}
+          >
             Atelier artisan spécialisé en tuning, restauration et entretien haut de gamme.
           </div>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 22, color: "#c5c5ca" }}>
-          <div>garage.example.be</div>
-          <div style={{ color: "#ff4d0d", fontWeight: 700 }}>+32 478 11 59 81</div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            fontSize: 22,
+            color: "#c5c5ca",
+          }}
+        >
+          <div style={{ display: "flex" }}>garage.example.be</div>
+          <div style={{ display: "flex", color: "#ff4d0d", fontWeight: 700 }}>
+            +32 478 11 59 81
+          </div>
         </div>
       </div>
     ),
