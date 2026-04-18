@@ -6,6 +6,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
+import WelcomePopup from "@/components/layout/WelcomePopup";
 
 const display = Oswald({
   subsets: ["latin"],
@@ -95,6 +96,7 @@ export default function RootLayout({
           <Footer />
           <FloatingWhatsApp />
           <StickyMobileCTA />
+          <WelcomePopup />
         </LangProvider>
       </body>
     </html>

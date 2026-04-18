@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, Wrench } from "lucide-react";
+import { Menu, X, Wrench, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -71,9 +71,16 @@ export default function Header() {
             <LangSwitch />
             <Link
               href="/contact"
-              className="hidden md:inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-ember-500 to-ember-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-ink-950 transition-transform hover:scale-[1.02] shadow-ember"
+              className="group relative hidden md:inline-flex items-center gap-2.5 overflow-hidden rounded-xl bg-gradient-to-br from-ember-400 via-ember-500 to-ember-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-ink-950 shadow-ember transition-transform hover:scale-[1.04] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
             >
-              {t.nav.cta}
+              <span
+                aria-hidden
+                className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
+              />
+              <span className="relative flex items-center gap-2">
+                {t.nav.cta}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
             </Link>
             <button
               onClick={() => setOpen(true)}

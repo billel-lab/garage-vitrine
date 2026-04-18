@@ -284,6 +284,20 @@ export const dictionaries = {
       successAction: "Envoyer une autre demande",
       error: "Une erreur est survenue. Essayez à nouveau ou appelez-nous.",
     },
+    popup: {
+      badge: "Offre atelier · cette semaine",
+      title: "Diagnostic offert",
+      subtitle:
+        "Pour toute préparation ou restauration engagée cette semaine. Rendez-vous en 7 jours.",
+      bullets: [
+        "Diagnostic électronique multi-marques inclus",
+        "Devis écrit et détaillé sous 24h",
+        "Garantie atelier 12 mois sur nos interventions",
+      ],
+      primary: "Réserver mon créneau",
+      secondary: "Discuter sur WhatsApp",
+      close: "Fermer",
+    },
     footer: {
       tagline: "Atelier artisan — Préparation, restauration, entretien.",
       nav: "Navigation",
@@ -545,6 +559,20 @@ export const dictionaries = {
       success: "Aanvraag ontvangen. We komen binnen 24u terug.",
       successAction: "Nieuwe aanvraag",
       error: "Er ging iets mis. Probeer opnieuw of bel ons.",
+    },
+    popup: {
+      badge: "Aanbieding werkplaats · deze week",
+      title: "Gratis diagnose",
+      subtitle:
+        "Voor elke tuning of restauratie die deze week wordt geboekt. Afspraak binnen 7 dagen.",
+      bullets: [
+        "Multi-merk elektronische diagnose inbegrepen",
+        "Geschreven gedetailleerde offerte binnen 24u",
+        "Werkplaatsgarantie 12 maanden op onze tussenkomsten",
+      ],
+      primary: "Mijn plaats reserveren",
+      secondary: "Op WhatsApp chatten",
+      close: "Sluiten",
     },
     footer: {
       tagline: "Ambachtelijke werkplaats — Tuning, restauratie, onderhoud.",

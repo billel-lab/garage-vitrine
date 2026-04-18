@@ -1,10 +1,11 @@
 "use client";
 
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import PageHeader from "@/components/shared/PageHeader";
 import MultiStepForm from "@/components/form/MultiStepForm";
 import BlurFade from "@/components/ui/blur-fade";
+import WhatsAppIcon from "@/components/ui/whatsapp-icon";
 import { whatsappLink } from "@/lib/utils";
 
 export default function ContactPage() {
@@ -40,7 +41,7 @@ export default function ContactPage() {
                     hint="Lun–Ven 8h30–18h"
                   />
                   <InfoCard
-                    icon={MessageCircle}
+                    icon={WhatsAppIcon}
                     title="WhatsApp"
                     primary={phone}
                     href={whatsappLink("Bonjour, je souhaite un devis.")}
@@ -81,7 +82,7 @@ function InfoCard({
   hint,
   href,
 }: {
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   primary: string;
   hint?: string;
